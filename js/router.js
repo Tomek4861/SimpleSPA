@@ -9,7 +9,7 @@ function OnStartUp() {
 
 OnStartUp();
 
-document.querySelector('#about-link').addEventListener('click', (event) => {
+document.querySelector('#about-link').addEventListener('click', () => {
     let stateObj = {page: 'about'};
     document.title = 'About';
     history.pushState(stateObj, "about", "?about");
@@ -44,11 +44,42 @@ function RenderContactPage() {
      <label for="email">Email:</label>
      <input type="email" id="email" name="email" required>
      <label for="message">Message:</label>
-     <textarea id="message" name="message" required></textarea>     <button type="submit" class="default-button">Send</button>     </form>     </div>`;
+     <textarea id="message" name="message" required></textarea>    
+     <div class="g-recaptcha" data-sitekey="6LdaJx0rAAAAAHjZZnmWBudHWgRG9GQZHOXXzK9z"></div> 
+     <button type="submit" class="default-button">Send</button>     
+     </form>     
+     </div>`;
+
+
     document.getElementById('contact-form').addEventListener('submit', (event) => {
         event.preventDefault();
+
+        const nameField = document.getElementById('name');
+        const nameRegex = /^[a-zA-Z\s'-]+$/;
+        if (!nameRegex.test(nameField.value)) {
+            alert('Invalid name. ');
+            return;
+        }
+        const emailField = document.getElementById('email');
+        const emailRegex = /^[^@]+@[^@]+\.[^@]+$/;
+        if (!emailRegex.test(emailField.value)) {
+            alert('Invalid Email.');
+            return;
+        }
+        const msgField = document.getElementById('message');
+        const msgLen = msgField.value.trim().length;
+        if (msgLen < 50 || msgLen > 5000) {
+            alert('Message too long or too short.');
+            return;
+        }
         alert('Form submitted!');
     });
+    if (typeof grecaptcha !== "undefined") {
+        grecaptcha.render(document.querySelector('.g-recaptcha'), {
+            sitekey: '6LdaJx0rAAAAAHjZZnmWBudHWgRG9GQZHOXXzK9z'
+        });
+    }
+
 }
 
 function RenderGalleryPage() {
@@ -103,10 +134,9 @@ function RenderGalleryPage() {
         }
     });
 
-
-
-
 }
+
+
 
 function popStateHandler() {
     let loc = window.location.href.toString().split(window.location.host)[1];
@@ -124,3 +154,13 @@ document.getElementById('theme-toggle').addEventListener('click', () => {
 
 
 window.onpopstate = popStateHandler;
+
+
+
+function onRecaptchaLoadCallback() {
+    if (document.querySelector('.g-recaptcha')) {
+        grecaptcha.render(document.querySelector('.g-recaptcha'), {
+            sitekey: '6LdaJx0rAAAAAHjZZnmWBudHWgRG9GQZHOXXzK9z'
+        });
+    }
+}
