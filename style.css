@@ -54,6 +54,14 @@ main {
     border: white solid 0;
 }
 
+
+@media (width < 600px) {
+    #theme-toggle {
+        padding: 0.68rem;
+    }
+
+}
+
 #theme-toggle:hover {
     background-color: rgba(18, 18, 18, 0.83);
     transition: ease-in-out 0.3s;
@@ -92,8 +100,13 @@ body {
 
 .contact-form-container {
     margin: 0 auto;
-    width: 60%;
 
+}
+
+@media (width > 900px) {
+    .contact-form-container {
+        width: 60%;
+    }
 
 }
 
@@ -110,6 +123,15 @@ body {
 #contact-form input,
 #contact-form textarea {
     width: 42%;
+}
+
+@media (width < 700px) {
+    #contact-form label,
+    #contact-form input,
+    #contact-form textarea {
+        width: 90%;
+    }
+
 }
 
 #contact-form input,
@@ -153,7 +175,26 @@ body {
 
 .gallery-image {
     padding: 0.8rem;
-    width: 500px;
+}
+
+@media (0px < width <800px) {
+    .gallery-image {
+        width: 300px;
+    }
+}
+
+@media (800px < width < 1200px) {
+    .gallery-image {
+        width: 350px;
+    }
+
+
+}
+@media (width > 1200px) {
+    .gallery-image {
+        width: 450px;
+    }
+
 
 }
 
