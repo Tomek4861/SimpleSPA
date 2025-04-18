@@ -95,15 +95,16 @@ function RenderGalleryPage() {
                </div>
         `;
     let imgID = 0;
-    for (let i = 0; i < 15; i++) {
+    for (let i = 0; i < 150; i++) {
         let smallImgContainer = document.createElement('div');
         smallImgContainer.classList.add("small-image-container")
         for (let j= 0; j < 3; j++){
             imgID++;
             let img = document.createElement('img');
+            img.loading = 'lazy';
             img.src = `https://picsum.photos/id/${imgID}/1000/600`;
             img.width = 500;
-            img.loading = 'lazy';
+            img.height = 300;
             img.classList.add("gallery-image")
             smallImgContainer.appendChild(img);
         }
