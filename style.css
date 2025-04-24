@@ -1,3 +1,10 @@
+:root {
+    --dark-color: #121212;
+    --light-color: #FFFFFFFF;
+}
+
+
+
 html, body {
     font-family: sans-serif;
     text-align: center;
@@ -28,7 +35,7 @@ header {
 }
 
 .header-link:hover {
-    border-bottom: 1px solid white;
+    border-bottom: 1px solid var(--light-color);
 }
 
 
@@ -46,8 +53,8 @@ main {
 }
 
 #theme-toggle {
-    background-color: #121212;
-    color: white;
+    background-color: var(--dark-color);
+    color: var(--light-color);
     font-size: 1rem;
     padding: 0.68rem 1rem;
     border-radius: 20px;
@@ -70,7 +77,7 @@ main {
 
 .dark-mode #theme-toggle {
     background-color: #ffffff;
-    color: #121212;
+    color: var(--dark-color)
 }
 
 .dark-mode #theme-toggle:hover {
@@ -78,7 +85,7 @@ main {
 }
 
 body.dark-mode {
-    background-color: #121212;
+    background-color: var(--dark-color);
     color: #ffffff;
 }
 
@@ -136,13 +143,13 @@ body {
 
 #contact-form input,
 #contact-form textarea {
-    border: 1px solid #121212;
+    border: 1px solid var(--dark-color);
     border-radius: 5px;
     padding: 0.5rem;
     font-size: 1.2rem;
     margin-bottom: 0.85rem;
-    color: #121212;
-    background-color: white;
+    color: var(--dark-color);
+    background-color: var(--light-color);
 }
 
 #contact-form textarea {
@@ -151,8 +158,8 @@ body {
 
 .default-button {
     margin: 1rem;
-    background-color: #121212;
-    color: white;
+    background-color: var(--dark-color);
+    color: var(--light-color);
     font-size: 1rem;
     padding: 0.68rem 2.3rem;
     border-radius: 20px;
@@ -161,15 +168,15 @@ body {
 }
 
 .dark-mode .default-button {
-    background-color: white;
-    color: #121212;
+    background-color: var(--light-color);
+    color: var(--dark-color);
 }
 
 .dark-mode #contact-form input,
 .dark-mode #contact-form textarea {
     background-color: rgba(18, 18, 18, 0.25);
-    color: white;
-    border: 1px solid white;
+    color: var(--light-color);
+    border: 1px solid var(--light-color);
 
 }
 
@@ -215,7 +222,7 @@ body {
 }
 
 #imgModal {
-    background-color: white;
+    background-color: var(--light-color);
     margin: 10% auto;
     display: flex;
     flex-direction: column;
@@ -226,7 +233,7 @@ body {
 }
 
 .dark-mode #imgModal {
-    background-color: #121212;
+    background-color: var(--dark-color);
 }
 
 #imgModal img {

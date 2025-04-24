@@ -1,6 +1,7 @@
 let pageUrls = {
     about: '/index.html?about',
-    contact: '/index.html?contact'
+    contact: '/index.html?contact',
+    gallery: '/index.html?gallery',
 };
 
 function OnStartUp() {
@@ -94,6 +95,26 @@ function RenderGalleryPage() {
                </div>
                </div>
         `;
+    const observer = new IntersectionObserver((entries, obs) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                const img = entry.target;
+                const url = img.dataset.src;
+
+                fetch(url)
+                    .then(res => res.blob())
+                    .then(blob => {
+                        img.src = URL.createObjectURL(blob);
+                        obs.unobserve(img);
+                    })
+                    .catch(err => console.error("Image load failed", err));
+            }
+        });
+    }, {
+        rootMargin: "200px",
+        threshold: 0.1
+    });
+
     let imgID = 0;
     for (let i = 0; i < 150; i++) {
         let smallImgContainer = document.createElement('div');
@@ -101,12 +122,15 @@ function RenderGalleryPage() {
         for (let j= 0; j < 3; j++){
             imgID++;
             let img = document.createElement('img');
-            img.loading = 'lazy';
-            img.src = `https://picsum.photos/id/${imgID}/1000/600`;
+            // img.loading = 'lazy';
             img.width = 500;
             img.height = 300;
+            img.dataset.id = imgID;
+            img.dataset.src = `https://picsum.photos/id/${imgID}/1000/600`;
             img.classList.add("gallery-image")
             smallImgContainer.appendChild(img);
+            observer.observe(img);
+
         }
         document.querySelector('.main-image-container').appendChild(smallImgContainer);
 
@@ -120,8 +144,7 @@ function RenderGalleryPage() {
         img => {
             img.addEventListener("click", () => {
                     const modalImage = document.querySelector("#imgModal img");
-                    const urlParts = img.src.split("/");
-                    const imgID = urlParts[4];
+                    const imgID = img.dataset.id;
                     modalImage.src = `https://picsum.photos/id/${imgID}/1000/600`;
                     document.querySelector(".modal-wrapper").classList.add("show")
                 }
@@ -147,6 +170,9 @@ function popStateHandler() {
     if (loc === pageUrls.about) {
         RenderAboutPage();
     }
+    if (loc === pageUrls.gallery) {
+        RenderGalleryPage();
+    }
 }
 
 document.getElementById('theme-toggle').addEventListener('click', () => {
@@ -155,13 +181,3 @@ document.getElementById('theme-toggle').addEventListener('click', () => {
 
 
 window.onpopstate = popStateHandler;
-
-
-
-function onRecaptchaLoadCallback() {
-    if (document.querySelector('.g-recaptcha')) {
-        grecaptcha.render(document.querySelector('.g-recaptcha'), {
-            sitekey: '6LdaJx0rAAAAAHjZZnmWBudHWgRG9GQZHOXXzK9z'
-        });
-    }
-}
