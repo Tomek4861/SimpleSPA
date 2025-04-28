@@ -73,6 +73,11 @@ function RenderContactPage() {
             alert('Message too long or too short.');
             return;
         }
+        const recaptchaResponse = grecaptcha.getResponse();
+        if (recaptchaResponse.length === 0) {
+            alert('Please verify reCaptcha.');
+            return;
+        }
         alert('Form submitted!');
     });
     if (typeof grecaptcha !== "undefined") {
