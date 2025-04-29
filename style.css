@@ -5,7 +5,8 @@
 
 
 
-html, body {
+html,
+body {
     font-family: sans-serif;
     text-align: center;
     height: 100%;
@@ -133,6 +134,7 @@ body {
 }
 
 @media (width < 700px) {
+
     #contact-form label,
     #contact-form input,
     #contact-form textarea {
@@ -198,6 +200,7 @@ body {
 
 
 }
+
 @media (width > 1600px) {
     .gallery-image {
         width: 450px;
@@ -224,12 +227,41 @@ body {
 #imgModal {
     background-color: var(--light-color);
     margin: 10% auto;
+
     display: flex;
     flex-direction: column;
     align-items: center;
     border: #7a7777 solid 4px;
     border-radius: 10px;
-    width: 65rem;
+    max-width: 60rem;
+}
+
+@media (800px <width < 1900px) {
+    #imgModal {
+
+        margin: 2% auto;
+    }
+}
+
+@media (700px < width <1000px) {
+    #imgModal>img {
+
+        width: 600px;
+    }
+}
+
+@media (450px < width <700px) {
+    #imgModal>img {
+
+        width: 400px;
+    }
+}
+
+@media (width <450px) {
+    #imgModal>img {
+
+        width: 30px;
+    }
 }
 
 .dark-mode #imgModal {
@@ -254,4 +286,3 @@ body {
     justify-content: end;
     width: 100%;
 }
-

@@ -11,19 +11,19 @@ function OnStartUp() {
 OnStartUp();
 
 document.querySelector('#about-link').addEventListener('click', () => {
-    let stateObj = {page: 'about'};
+    let stateObj = { page: 'about' };
     document.title = 'About';
     history.pushState(stateObj, "about", "?about");
     RenderAboutPage();
 });
 document.querySelector('#contact-link').addEventListener('click', (event) => {
-    let stateObj = {page: 'contact'};
+    let stateObj = { page: 'contact' };
     document.title = 'Contact';
     history.pushState(stateObj, "contact", "?contact");
     RenderContactPage();
 });
 document.querySelector('#gallery-link').addEventListener('click', (event) => {
-    let stateObj = {page: 'gallery'};
+    let stateObj = { page: 'gallery' };
     document.title = 'Gallery';
     history.pushState(stateObj, "Gallery", "?gallery");
     RenderGalleryPage();
@@ -94,7 +94,7 @@ function RenderGalleryPage() {
                <div class="main-image-container"></div> 
                <div class="modal-wrapper">
                <div class="" id="imgModal">
-                <img src="https://picsum.photos/id/1/1000/600" alt="modal">
+                <img src="https://picsum.photos/id/1/800/480" alt="modal">
                 <div class="button-row"><button id="closeModalButton" class="default-button">Close</button></div>
                             
                </div>
@@ -124,7 +124,7 @@ function RenderGalleryPage() {
     for (let i = 0; i < 150; i++) {
         let smallImgContainer = document.createElement('div');
         smallImgContainer.classList.add("small-image-container")
-        for (let j= 0; j < 3; j++){
+        for (let j = 0; j < 3; j++) {
             imgID++;
             let img = document.createElement('img');
             // img.loading = 'lazy';
@@ -148,11 +148,11 @@ function RenderGalleryPage() {
     document.querySelectorAll('.gallery-image').forEach(
         img => {
             img.addEventListener("click", () => {
-                    const modalImage = document.querySelector("#imgModal img");
-                    const imgID = img.dataset.id;
-                    modalImage.src = `https://picsum.photos/id/${imgID}/1000/600`;
-                    document.querySelector(".modal-wrapper").classList.add("show")
-                }
+                const modalImage = document.querySelector("#imgModal img");
+                const imgID = img.dataset.id;
+                modalImage.src = `https://picsum.photos/id/${imgID}/800/480`;
+                document.querySelector(".modal-wrapper").classList.add("show")
+            }
 
             )
         }
