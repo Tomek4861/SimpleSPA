@@ -31,9 +31,11 @@ A simple Single Page Application (SPA) built for a Cloud Programming lab. This p
 
 ## Quick Preview
 
-* ![About Page](TUTAJWRZUCESCREENA)
-* ![Gallery Page](TUTAJWRZUCESCREENA)
-* ![Contact Page](TUTAJWRZUCESCREENA)
+* ![Home Page](https://github.com/user-attachments/assets/54a3df1c-513e-4328-9f76-b2f4c401d9b1)
+* ![Gallery Page](https://github.com/user-attachments/assets/62057655-5333-43b3-a525-7bd9485f7804)
+* ![Gallery Page Modal](https://github.com/user-attachments/assets/9fb187bc-90aa-49ad-8151-212278cc8fdc)
+* ![Contact Page](https://github.com/user-attachments/assets/3479b344-f5f5-4d8e-9b71-b5f8f3a84421)
+
 
 
 ## License
